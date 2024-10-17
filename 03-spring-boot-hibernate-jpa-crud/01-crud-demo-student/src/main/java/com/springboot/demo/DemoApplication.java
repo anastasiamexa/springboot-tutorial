@@ -19,7 +19,8 @@ public class DemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return args -> {
 			// createStudent(studentDAO);
-			createMultipleStudents(studentDAO);
+			// createMultipleStudents(studentDAO);
+			readStudent(studentDAO);
 		};
 	}
 
@@ -53,5 +54,25 @@ public class DemoApplication {
 
 		// display the id of the saved student
 		System.out.println("Saved student id: " + student.getId());
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		// create a student
+		System.out.println("Creating a new student...");
+		Student student = new Student("David", "Bowie", "david@bowie.com");
+
+		// save the student
+		System.out.println("Saving the student...");
+		studentDAO.save(student);
+
+		// display the id of the saved student
+		System.out.println("Saved student id: " + student.getId());
+
+		// find the student by id
+		System.out.println("Finding the student by id...");
+		Student foundStudent = studentDAO.findById(student.getId());
+
+		// display the found student
+		System.out.println("Found student: " + foundStudent);
 	}
 }
