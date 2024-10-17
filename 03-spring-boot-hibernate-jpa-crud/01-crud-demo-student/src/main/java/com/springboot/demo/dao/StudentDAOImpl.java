@@ -1,5 +1,7 @@
 package com.springboot.demo.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,5 +32,11 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public Student findById(Integer id) {
         return entityManager.find(Student.class, id);
+    }
+
+    // implement findAll method
+    @Override
+    public List<Student> findAll() {
+        return entityManager.createQuery("FROM Student", Student.class).getResultList();
     }
 }

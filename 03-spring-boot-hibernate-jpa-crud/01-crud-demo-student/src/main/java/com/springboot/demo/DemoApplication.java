@@ -1,5 +1,7 @@
 package com.springboot.demo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +22,8 @@ public class DemoApplication {
 		return args -> {
 			// createStudent(studentDAO);
 			// createMultipleStudents(studentDAO);
-			readStudent(studentDAO);
+			// readStudent(studentDAO);
+			queryForStudents(studentDAO);
 		};
 	}
 
@@ -74,5 +77,15 @@ public class DemoApplication {
 
 		// display the found student
 		System.out.println("Found student: " + foundStudent);
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
+		// get list of students
+		List<Student> students = studentDAO.findAll();
+
+		// display the students
+		for (Student student : students) {
+			System.out.println(student);
+		}
 	}
 }
