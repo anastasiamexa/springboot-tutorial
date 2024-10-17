@@ -26,7 +26,8 @@ public class DemoApplication {
 			// queryForStudents(studentDAO);
 			// queryForStudentsByLastName(studentDAO);
 			// updateStudent(studentDAO);
-			deleteStudent(studentDAO);
+			// deleteStudent(studentDAO);
+			deleteAllStudents(studentDAO);
 		};
 	}
 
@@ -143,5 +144,14 @@ public class DemoApplication {
 
 		// display the deleted student
 		System.out.println("Deleted student: " + student);
+	}
+
+	private void deleteAllStudents(StudentDAO studentDAO) {
+		// delete all students
+		System.out.println("Deleting all students...");
+		int count = studentDAO.deleteAll();
+
+		// display the number of deleted students
+		System.out.println("Number of deleted students: " + count);
 	}
 }
