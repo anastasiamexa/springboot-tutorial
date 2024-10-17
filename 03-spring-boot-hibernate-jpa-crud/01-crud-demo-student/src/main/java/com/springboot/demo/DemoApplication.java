@@ -24,7 +24,8 @@ public class DemoApplication {
 			// createMultipleStudents(studentDAO);
 			// readStudent(studentDAO);
 			// queryForStudents(studentDAO);
-			queryForStudentsByLastName(studentDAO);
+			// queryForStudentsByLastName(studentDAO);
+			updateStudent(studentDAO);
 		};
 	}
 
@@ -98,5 +99,28 @@ public class DemoApplication {
 		for (Student student : students) {
 			System.out.println(student);
 		}
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		// create a student
+		System.out.println("Creating a new student...");
+		Student student = new Student("Elvis", "Presley", "elvis@presley.com");
+
+		// save the student
+		System.out.println("Saving the student...");
+		studentDAO.save(student);
+
+		// display the id of the saved student
+		System.out.println("Saved student id: " + student.getId());
+
+		// update the student
+		System.out.println("Updating the student...");
+		student.setFirstName("Elvis Aaron");
+
+		// save the updated student
+		studentDAO.update(student);
+
+		// display the updated student
+		System.out.println("Updated student: " + student);
 	}
 }
