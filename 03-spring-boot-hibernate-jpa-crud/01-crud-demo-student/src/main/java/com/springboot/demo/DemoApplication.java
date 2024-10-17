@@ -23,7 +23,8 @@ public class DemoApplication {
 			// createStudent(studentDAO);
 			// createMultipleStudents(studentDAO);
 			// readStudent(studentDAO);
-			queryForStudents(studentDAO);
+			// queryForStudents(studentDAO);
+			queryForStudentsByLastName(studentDAO);
 		};
 	}
 
@@ -82,6 +83,16 @@ public class DemoApplication {
 	private void queryForStudents(StudentDAO studentDAO) {
 		// get list of students
 		List<Student> students = studentDAO.findAll();
+
+		// display the students
+		for (Student student : students) {
+			System.out.println(student);
+		}
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> students = studentDAO.findByLastName("Jackson");
 
 		// display the students
 		for (Student student : students) {
