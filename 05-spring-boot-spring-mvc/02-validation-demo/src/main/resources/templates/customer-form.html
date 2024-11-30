@@ -13,20 +13,27 @@
     <h1>Customer Registration Form</h1>
     <form th:action="@{/processForm}" th:object="${customer}" method="POST">
       First name: <input type="text" th:field="*{firstName}" /><br /><br />
-      Last name (*): <input type="text" th:field="*{lastName}" /><br /><br />
+      Last name (*): <input type="text" th:field="*{lastName}" />
       <!-- Add error message if present -->
       <span
         th:if="${#fields.hasErrors('lastName')}"
         th:errors="*{lastName}"
         class="error"
-      /><br />
-      Free passes: <input type="number" th:field="*{freePasses}" /><br /><br />
+      /><br /><br />
+      Free passes: <input type="text" th:field="*{freePasses}" />
       <!-- Add error message if present -->
       <span
         th:if="${#fields.hasErrors('freePasses')}"
         th:errors="*{freePasses}"
         class="error"
-      /><br />
+      /><br /><br />
+      Postal code: <input type="text" th:field="*{postalCode}" />
+      <!-- Add error message if present -->
+      <span
+        th:if="${#fields.hasErrors('postalCode')}"
+        th:errors="*{postalCode}"
+        class="error"
+      /><br /><br />
 
       <input type="submit" value="Submit" />
     </form>
