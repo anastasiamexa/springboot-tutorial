@@ -2,8 +2,8 @@ package com.springboot.thymeleafdemo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -15,14 +15,14 @@ public class HelloWorldController {
     return "helloworld-form";
   }
   
-  @GetMapping("/processForm")
+  @RequestMapping("/processForm")
   // method to process the HTML form
   public String processForm() {
     return "helloworld";
   }
 
   // method to read form data and add data to the model
-  @GetMapping("/processForm2")
+  @RequestMapping("/processForm2")
   public String letsShoutDude(HttpServletRequest request, Model model) {
     // read the request parameter from the HTML form
     String name = request.getParameter("studentName");
@@ -30,6 +30,19 @@ public class HelloWorldController {
     name = name.toUpperCase();
     // create the message
     String result = "Yo! " + name;
+    // add message to the model
+    model.addAttribute("message", result);
+    
+    return "helloworld";
+  }
+
+  // method to read form data and add data to the model via @RequestParam
+  @RequestMapping("/processForm3")
+  public String processForm3(@RequestParam("studentName") String name, Model model) {
+    // convert the data to all caps
+    name = name.toUpperCase();
+    // create the message
+    String result = "Hey my friend! " + name;
     // add message to the model
     model.addAttribute("message", result);
     
