@@ -1,10 +1,13 @@
 package com.springboot.thymeleafdemo.model;
 
+import java.util.List;
+
 public class Student {
   private String firstName;
   private String lastName;
   private String country;
   private String favoriteLang;
+  private List<String> favoriteOper;
 
   public Student() {
   }
@@ -39,5 +42,13 @@ public class Student {
 
   public void setFavoriteLang(String favoriteLang) {
     this.favoriteLang = favoriteLang;
+  }
+
+  public List<String> getFavoriteOper() {
+    return favoriteOper;
+  }
+
+  public void setFavoriteOper(List<String> favoriteOper) {
+    this.favoriteOper = favoriteOper;
   }
 }

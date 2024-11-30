@@ -16,6 +16,8 @@ public class StudentController {
   private List<String> countries;
   @Value("${languages}")
   private List<String> languages;
+  @Value("${operatings}")
+  private List<String> operatings;
 
   @GetMapping("/showStudentForm")
   public String showForm(Model model) {
@@ -25,6 +27,7 @@ public class StudentController {
     model.addAttribute("student", student);
     model.addAttribute("countries", countries);
     model.addAttribute("languages", languages);
+    model.addAttribute("operatings", operatings);
     return "student-form";
   }
 
@@ -32,7 +35,8 @@ public class StudentController {
   public String processForm(@ModelAttribute("student") Student student) {
     // log the input data
     System.out.println("student: " + student.getFirstName() + " " + student.getLastName() +
-     " from " + student.getCountry() + " likes " + student.getFavoriteLang()); 
+     " from " + student.getCountry() + " likes " + student.getFavoriteLang() + 
+     " and uses " + student.getFavoriteOper()); 
     return "student-confirmation";
   }
 }
