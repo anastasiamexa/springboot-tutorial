@@ -42,7 +42,8 @@ public class DemoSecurityConfig {
                         .loginPage("/showMyLoginPage")
                         .loginProcessingUrl("/authenticateTheUser")
                         .permitAll() // Allow everyone to see login page. No need to be logged in.
-                );
+                )
+                .logout(logout -> logout.permitAll()); // Redirect to login page after logout by default.
 
         return http.build();
     }
