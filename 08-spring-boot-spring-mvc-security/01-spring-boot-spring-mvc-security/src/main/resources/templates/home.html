@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <title>Spring Boot Security - Home</title>
 </head>
+
 <body>
     <h2>Welcome to Spring Boot Security</h2>
     <hr>
     Welcome to the home page!
     <br>
+    User: <span sec:authentication="principal.username"></span>
+    <br>
+    Role (s): <span sec:authentication="principal.authorities"></span>
+    <hr>
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for Managers)
+    </p>
+    <p>
+        <a th:href="@{/systems}">IT Systems Meeting</a>
+        (Only for Admins)
+    </p>
+
     <form action="#" th:action="@{/logout}" method="POST">
         <input type="submit" value="Logout">
     </form>
 </body>
+
 </html>
