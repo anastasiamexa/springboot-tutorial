@@ -24,11 +24,17 @@ public class CruddemoApplication {
 	}
 
 	private void createInstructor(AppDAO appDAO) {
-		// Create Instructor
+		/*// Create Instructor
 		Instructor instructor = new Instructor("Janet", "Jackson", "janet@jackson.com");
 
 		// Create Instructor Detail
-		InstructorDetail instructorDetail = new InstructorDetail("http://www.janet.com/youtube", "Dancing");
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.janet.com/youtube", "Dancing");*/
+
+		// Create Instructor
+		Instructor instructor = new Instructor("Michael", "Jackson", "michael@jackson.com");
+
+		// Create Instructor Detail
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.michael.com/youtube", "Singing");
 
 		// Associate Instructor with Instructor Detail
 		instructor.setInstructorDetail(instructorDetail);
