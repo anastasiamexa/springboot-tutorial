@@ -5,4 +5,6 @@ import com.springboot.cruddemo.entity.Instructor;
 public interface AppDAO {
 
     void save(Instructor instructor);
+
+    Instructor findById(int id);
 }
