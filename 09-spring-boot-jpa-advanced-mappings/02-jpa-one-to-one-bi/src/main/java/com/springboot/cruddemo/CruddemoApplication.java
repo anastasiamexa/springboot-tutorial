@@ -71,7 +71,7 @@ public class CruddemoApplication {
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
 		// Delete Instructor Detail
-		appDAO.deleteInstructorDetailById(3);
+		appDAO.deleteInstructorDetailById(4);
 		System.out.println("Instructor Detail Deleted");
 	}
 }
