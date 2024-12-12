@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.springboot.cruddemo.dao.AppDAO;
+import com.springboot.cruddemo.entity.Course;
 import com.springboot.cruddemo.entity.Instructor;
 import com.springboot.cruddemo.entity.InstructorDetail;
 
@@ -23,7 +24,8 @@ public class CruddemoApplication {
 			// findInstructor(appDAO);
 			// deleteInstructor(appDAO);
 			// findInstructorDetail(appDAO);
-			deleteInstructorDetail(appDAO);
+			// deleteInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
 	}
 
@@ -73,5 +75,26 @@ public class CruddemoApplication {
 		// Delete Instructor Detail
 		appDAO.deleteInstructorDetailById(4);
 		System.out.println("Instructor Detail Deleted");
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		// Create Instructor
+		Instructor instructor = new Instructor("Janet", "Jackson", "janet@jackson.com");
+
+		// Create Instructor Detail
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.janet.com/youtube", "Dancing");
+
+		// Associate Instructor with Instructor Detail
+		instructor.setInstructorDetail(instructorDetail);
+
+		// Create Courses
+		instructor.addCourse(new Course("Rhythm Nation - Choreography"));
+		instructor.addCourse(new Course("If - Choreography"));
+		instructor.addCourse(new Course("I Get Lonely - Choreography"));
+
+		// Save Instructor (this will also save the courses because of CascadeType.PERSIST)
+		System.out.println("Saving Instructor: " + instructor);
+		System.out.println("Saving Courses: " + instructor.getCourses());
+		appDAO.save(instructor);
 	}
 }
