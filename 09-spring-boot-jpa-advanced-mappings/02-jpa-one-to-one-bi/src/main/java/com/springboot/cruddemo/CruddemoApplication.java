@@ -22,7 +22,8 @@ public class CruddemoApplication {
 			// createInstructor(appDAO);
 			// findInstructor(appDAO);
 			// deleteInstructor(appDAO);
-			findInstructorDetail(appDAO);
+			// findInstructorDetail(appDAO);
+			deleteInstructorDetail(appDAO);
 		};
 	}
 
@@ -66,5 +67,11 @@ public class CruddemoApplication {
 		System.out.println("Found Instructor Detail: " + instructorDetail);
 		System.out.println("Found Instructor: " + instructorDetail.getInstructor());
 		return instructorDetail;
+	}
+
+	private void deleteInstructorDetail(AppDAO appDAO) {
+		// Delete Instructor Detail
+		appDAO.deleteInstructorDetailById(3);
+		System.out.println("Instructor Detail Deleted");
 	}
 }
