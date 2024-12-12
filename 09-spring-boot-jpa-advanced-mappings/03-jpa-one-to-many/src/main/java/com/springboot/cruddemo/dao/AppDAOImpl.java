@@ -1,9 +1,12 @@
 package com.springboot.cruddemo.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springboot.cruddemo.entity.Course;
 import com.springboot.cruddemo.entity.Instructor;
 import com.springboot.cruddemo.entity.InstructorDetail;
 
@@ -52,5 +55,12 @@ public class AppDAOImpl implements AppDAO {
         // remove the associated object reference break bi-directional link
         instructorDetail.getInstructor().setInstructorDetail(null);
         entityManager.remove(instructorDetail);
+    }
+
+    @Override
+    public List<Course> findCoursesByInstructorId(int id) {
+        // create query
+        return entityManager.createQuery("from Course where instructor.id=:id", Course.class).setParameter("id", id)
+                .getResultList();
     }
 }
