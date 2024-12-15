@@ -21,7 +21,8 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
-			createCourseAndReviews(appDAO);
+			// createCourseAndReviews(appDAO);
+			retireveCourseAndReviews(appDAO);
 		};
 	}
 
@@ -40,6 +41,14 @@ public class CruddemoApplication {
 		appDAO.save(course);
 	}
 
+	private void retireveCourseAndReviews(AppDAO appDAO) {
+		// Find Course
+		Course course = appDAO.findCourseByIdWithReviews(10);
+		System.out.println("Found Course: " + course);
+		System.out.println("Found Reviews: " + course.getReviews());
+	}
+
+	// ------ OLD CODE ------ //
 	private void createInstructor(AppDAO appDAO) {
 		/*// Create Instructor
 		Instructor instructor = new Instructor("Janet", "Jackson", "janet@jackson.com");
