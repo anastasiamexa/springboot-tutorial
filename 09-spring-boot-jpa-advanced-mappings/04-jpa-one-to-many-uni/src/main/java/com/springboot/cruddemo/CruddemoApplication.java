@@ -22,7 +22,8 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
 			// createCourseAndReviews(appDAO);
-			retireveCourseAndReviews(appDAO);
+			// retireveCourseAndReviews(appDAO);
+			deleteCourseAndReviews(appDAO);
 		};
 	}
 
@@ -46,6 +47,12 @@ public class CruddemoApplication {
 		Course course = appDAO.findCourseByIdWithReviews(10);
 		System.out.println("Found Course: " + course);
 		System.out.println("Found Reviews: " + course.getReviews());
+	}
+
+	private void deleteCourseAndReviews(AppDAO appDAO) {
+		// Delete Course
+		appDAO.deleteCourseById(10);
+		System.out.println("Course Deleted");
 	}
 
 	// ------ OLD CODE ------ //
