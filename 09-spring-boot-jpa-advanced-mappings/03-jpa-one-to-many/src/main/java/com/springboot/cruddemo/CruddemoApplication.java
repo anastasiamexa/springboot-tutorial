@@ -27,7 +27,9 @@ public class CruddemoApplication {
 			// deleteInstructorDetail(appDAO);
 			// createInstructorWithCourses(appDAO);
 			// findInstructorWithCourses(appDAO);
-			findInstructorWithCoursesJoinFetch(appDAO);
+			// findInstructorWithCoursesJoinFetch(appDAO);
+			// updateInstructor(appDAO);
+			updateCourse(appDAO);
 		};
 	}
 
@@ -116,5 +118,28 @@ public class CruddemoApplication {
 		System.out.println("Found Instructor Detail: " + instructor.getInstructorDetail());
 		// Use FetchType.LAZY to load courses
 		System.out.println("Found Courses: " + instructor.getCourses());
+	}
+
+	private void updateInstructor(AppDAO appDAO) {
+		// Find Instructor
+		Instructor instructor = appDAO.findById(1);
+		System.out.println("Found Instructor: " + instructor);
+
+		// Update Instructor
+		instructor.setFirstName("Janet Damita Jo");
+		instructor.setLastName("Jackson");
+		
+		appDAO.update(instructor);
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+		// Find Course
+		Course course = appDAO.findCourseById(10);
+		System.out.println("Found Course: " + course);
+
+		// Update Course
+		course.setTitle("Nasty - Choreography");
+		
+		appDAO.update(course);
 	}
 }
