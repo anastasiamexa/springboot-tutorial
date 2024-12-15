@@ -22,14 +22,16 @@ public class CruddemoApplication {
 		return runner -> {
 			// createInstructor(appDAO);
 			// findInstructor(appDAO);
-			// deleteInstructor(appDAO);
+			// deleteInstructorById(appDAO);
 			// findInstructorDetail(appDAO);
 			// deleteInstructorDetail(appDAO);
 			// createInstructorWithCourses(appDAO);
 			// findInstructorWithCourses(appDAO);
 			// findInstructorWithCoursesJoinFetch(appDAO);
 			// updateInstructor(appDAO);
-			updateCourse(appDAO);
+			// updateCourse(appDAO);
+			// deleteInstructor(appDAO);
+			deleteCourseById(appDAO);
 		};
 	}
 
@@ -61,7 +63,7 @@ public class CruddemoApplication {
 		System.out.println("Found Instructor Detail: " + instructor.getInstructorDetail());
 	}
 
-	private void deleteInstructor(AppDAO appDAO) {
+	private void deleteInstructorById(AppDAO appDAO) {
 		// Delete Instructor
 		appDAO.deleteById(2);
 		System.out.println("Instructor Deleted");
@@ -141,5 +143,17 @@ public class CruddemoApplication {
 		course.setTitle("Nasty - Choreography");
 		
 		appDAO.update(course);
+	}
+
+	private void deleteInstructor(AppDAO appDAO) {
+		// Delete Instructor
+		appDAO.deleteInstructorById(1);
+		System.out.println("Instructor Deleted");
+	}
+
+	private void deleteCourseById(AppDAO appDAO) {
+		// Delete Course
+		appDAO.deleteCourseById(10);
+		System.out.println("Course Deleted");
 	}
 }

@@ -87,4 +87,26 @@ public class AppDAOImpl implements AppDAO {
     public void update(Course course) {
         entityManager.merge(course);
     }
+
+    @Override
+    @Transactional
+    public void deleteInstructorById(int id) {
+        Instructor instructor = entityManager.find(Instructor.class, id);
+        List<Course> courses = instructor.getCourses();
+
+        // remove the associated objects
+        for (Course course : courses) {
+            course.setInstructor(null);
+        }
+
+        // delete the instructor
+        entityManager.remove(instructor);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseById(int id) {
+        Course course = entityManager.find(Course.class, id);
+        entityManager.remove(course);
+    }
 }
