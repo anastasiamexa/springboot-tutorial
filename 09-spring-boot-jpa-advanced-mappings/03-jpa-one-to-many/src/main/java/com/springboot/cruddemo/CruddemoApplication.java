@@ -26,7 +26,8 @@ public class CruddemoApplication {
 			// findInstructorDetail(appDAO);
 			// deleteInstructorDetail(appDAO);
 			// createInstructorWithCourses(appDAO);
-			findInstructorWithCourses(appDAO);
+			// findInstructorWithCourses(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
 	}
 
@@ -106,5 +107,14 @@ public class CruddemoApplication {
 		System.out.println("Found Instructor Detail: " + instructor.getInstructorDetail());
 		// Use FetchType.LAZY to load courses
 		System.out.println("Found Courses: " + appDAO.findCoursesByInstructorId(1));
+	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		// Find Instructor
+		Instructor instructor = appDAO.findInstructorByJoinFetch(1);
+		System.out.println("Found Instructor: " + instructor);
+		System.out.println("Found Instructor Detail: " + instructor.getInstructorDetail());
+		// Use FetchType.LAZY to load courses
+		System.out.println("Found Courses: " + instructor.getCourses());
 	}
 }
